@@ -1,0 +1,28 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "PantheraApp",
+      "request": "launch",
+      "mainClass": "com.africanbigcats.PantheraApp",
+      "projectName": "african-big-cats"
+    },
+    {
+      "type": "java",
+      "name": "App",
+      "request": "launch",
+      "mainClass": "com.bigcats.App",
+      "projectName": "african-big-cats"
+    },
+    {
+      "type": "java",
+      "name": "Run African Big Cats App",
+      "request": "launch",
+      "mainClass": "com.africanbigcats.App",
+      "projectName": "african-big-cats-app",
+      "console": "integratedTerminal",
+      "vmArgs": "-Dfile.encoding=UTF-8"
+    }
+  ]
+}
