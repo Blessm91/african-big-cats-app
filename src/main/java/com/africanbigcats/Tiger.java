@@ -1,14 +1,14 @@
 package com.africanbigcats;
 
 /*
- * Panthera base class that simulates GPS information
+ * Tiger class that extends Panthera
  */
 public class Tiger extends Panthera {
 
     // constructor
     public Tiger(String name) {
 
-        // call the super-class (parent) to instatiate it
+        // call the super-class (parent) to instantiate it
         super(name);
 
         // initialize attributes
