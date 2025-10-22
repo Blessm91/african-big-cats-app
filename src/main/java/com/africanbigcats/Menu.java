@@ -137,23 +137,20 @@ public class Menu {
          * to be added.
          */
 
-        System.out.print("Enter the species (tiger, lion, jaguar): ");
-        String type = input.nextLine().toLowerCase();
+        System.out.println("Enter a 1 for Tiger, 2 for Lion, 3 for Jaguar: ");
+        String choice = input.nextLine().trim();
 
-        Panthera result;
-
-        if (type.equals("tiger")) {
-            result = new Tiger(name);
-        } else if (type.equals("lion")) {
-            result = new Lion(name);
-        } else if (type.equals("jaguar")) {
-            result = new Jaguar(name);
-        } else {
-            System.out.println("Invalid type. Defaulting to Tiger.");
-            result = new Tiger(name);
+        switch (choice) {
+            case "1":
+                return new Tiger(name);
+            case "2":
+                return new Lion(name);
+            case "3":
+                return new Jaguar(name);
+            default:
+                System.out.println("Invalid selection. Defaulting to Tiger.");
+                return new Tiger(name);
         }
-
-        return result;
 
     }
 
@@ -165,6 +162,11 @@ public class Menu {
         System.out.print("Enter a name for the big cat to create: ");
         String name = input.nextLine();
         System.out.println();
+
+        /*
+         * TIP: In this area of the code, students would need to add in checking if the cat name
+         * already exists in order to prevent duplicates
+         */
 
         // check for duplicate cat names
         for (Panthera cat : catList) {
@@ -214,6 +216,11 @@ public class Menu {
         System.out.print("Enter a name or part of a name to find: ");
         String search = input.nextLine().toLowerCase();
         System.out.println();
+
+        /*
+         * TIP: In this area of the code, the find command should locate any cat that matches part
+         * of the name string entered by the user.
+         */
 
         boolean found = false;
 
