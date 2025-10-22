@@ -13,31 +13,31 @@ public class Lion extends Panthera {
 
         // initialize attributes
         this.setSpecies("lion");
-
     }
 
-    // serializes attributes into a string
+    // returns what type of fur this species has
+    public String fur() {
+        return "mane";
+    }
+
+    // serializes attributes into a JSON formatted string
     @Override
     public String toString() {
-        String s;
 
-        // return a JSON formatted string
+        // since the object is complex, we return a JSON formatted string
+        String s;
         s = "{ ";
-        s += "name: " + name();
+        s += "name: " + this.name();
         s += ", ";
-        s += "species: " + species();
+        s += "species: " + this.species();
         s += ", ";
-        s += "longitude: " + longitude();
+        s += "longitude: " + this.longitude();
         s += ", ";
-        s += "latitude: " + latitude();
+        s += "latitude: " + this.latitude();
         s += ", ";
-        s += "fur: " + fur();
+        s += "fur: " + this.fur();
         s += " }";
 
         return s;
-    }
-
-    public String fur() {
-        return "mane";
     }
 }
