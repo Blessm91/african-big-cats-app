@@ -3,7 +3,7 @@ package com.africanbigcats;
 import java.util.Random;
 
 /*
- * Panthera base class that simulates GPS information
+ * PantheraGPS base class that simulates GPS information
  */
 public class PantheraGPS {
 
@@ -36,7 +36,7 @@ public class PantheraGPS {
         this.latitudeRandom = new Random();
         this.latitudeRandom.setSeed(this.seed(name + "latitude"));
 
-        // move the panthera into it's initial position
+        // move the panthera into its initial position
         this.longitude = longitudeRandom.nextFloat() * maxLongitude;
         this.latitude = latitudeRandom.nextFloat() * maxLatitude;
 
@@ -78,7 +78,7 @@ public class PantheraGPS {
     private Integer seed(String s) {
         Integer seed = 0;
 
-        for (Integer i = 0; i < s.length() ; i++) {
+        for (Integer i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
             seed += (int) ch;
         }
@@ -86,6 +86,7 @@ public class PantheraGPS {
         return seed;
     }
 
+    // move the panthera to a new position
     public void move() {
         this.longitude += longitudeRandom.nextFloat() * maxSpeed;
         this.latitude += latitudeRandom.nextFloat() * maxSpeed;
@@ -100,6 +101,5 @@ public class PantheraGPS {
     public Float latitude() {
         return latitude;
     }
-
 
 }
