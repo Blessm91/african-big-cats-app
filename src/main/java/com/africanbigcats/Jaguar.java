@@ -5,6 +5,7 @@ package com.africanbigcats;
  */
 public class Jaguar extends Panthera {
 
+    // additional attribute
     private boolean sleepsInTrees;
 
     // constructor
@@ -16,37 +17,38 @@ public class Jaguar extends Panthera {
         // initialize attributes
         this.setSpecies("jaguar");
         this.sleepsInTrees = true;
-
     }
 
-    // serializes attributes into a string
-    @Override
-    public String toString() {
-        String s;
-
-        // return a JSON formatted string
-        s = "{ ";
-        s += "name: " + name();
-        s += ", ";
-        s += "species: " + species();
-        s += ", ";
-        s += "longitude: " + longitude();
-        s += ", ";
-        s += "latitude: " + latitude();
-        s += ", ";
-        s += "fur: " + fur();
-        s += ", ";
-        s += "sleepsInTrees: " + sleepsInTrees();
-        s += " }";
-
-        return s;
-    }
-
+    // returns what type of fur this species has
     public String fur() {
         return "spots";
     }
 
+    // returns true if the jaguar sleeps in trees
     public boolean sleepsInTrees() {
         return sleepsInTrees;
+    }
+
+    // serializes attributes into a JSON formatted string
+    @Override
+    public String toString() {
+
+        // since the object is complex, we return a JSON formatted string
+        String s;
+        s = "{ ";
+        s += "name: " + this.name();
+        s += ", ";
+        s += "species: " + this.species();
+        s += ", ";
+        s += "longitude: " + this.longitude();
+        s += ", ";
+        s += "latitude: " + this.latitude();
+        s += ", ";
+        s += "fur: " + this.fur();
+        s += ", ";
+        s += "sleepsInTrees: " + this.sleepsInTrees();
+        s += " }";
+
+        return s;
     }
 }
