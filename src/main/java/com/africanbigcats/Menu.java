@@ -79,6 +79,14 @@ public class Menu {
                 executeCreate(catList);
                 break;
 
+            case 'd':
+                executeDelete(catList);
+                break;
+
+            case 'f':
+                executeFind(catList);
+                break;
+
             case 'l':
                 executeList(catList);
                 break;
@@ -127,10 +135,23 @@ public class Menu {
          * 
          * Currently, the code always create a Tiger. But, support for Lions and Jaguars also needs
          * to be added.
-         * 
          */
 
-        Panthera result = new Tiger(name);
+        System.out.print("Enter the species (tiger, lion, jaguar): ");
+        String type = input.nextLine().toLowerCase();
+
+        Panthera result;
+
+        if (type.equals("tiger")) {
+            result = new Tiger(name);
+        } else if (type.equals("lion")) {
+            result = new Lion(name);
+        } else if (type.equals("jaguar")) {
+            result = new Jaguar(name);
+        } else {
+            System.out.println("Invalid type. Defaulting to Tiger.");
+            result = new Tiger(name);
+        }
 
         return result;
 
@@ -145,13 +166,67 @@ public class Menu {
         String name = input.nextLine();
         System.out.println();
 
-        /*
-         * TIP: In this area of the code, students would need to add in checking if the cat name
-         * already exists in order to prevent duplicates
-         */
+        // check for duplicate cat names
+        for (Panthera cat : catList) {
+            if (cat.name().equalsIgnoreCase(name)) {
+                System.out.println("ERROR: A cat with that name already exists.");
+                return;
+            }
+        }
 
+        // create new cat
         Panthera cat = getNewCat(name);
         catList.add(cat);
+        System.out.println("Created " + cat.species() + " named " + cat.name());
+    }
+
+    // delete a cat by name
+    public void executeDelete(LinkedList<Panthera> catList) {
+
+        System.out.println();
+        System.out.print("Enter the name of the cat to delete: ");
+        String name = input.nextLine();
+        System.out.println();
+
+        Iterator<Panthera> iterator = catList.iterator();
+        boolean found = false;
+
+        while (iterator.hasNext()) {
+            Panthera cat = iterator.next();
+            if (cat.name().equalsIgnoreCase(name)) {
+                iterator.remove();
+                found = true;
+                System.out.println("Deleted " + name);
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No cat found with that name.");
+        }
+
+    }
+
+    // find a cat by partial or full name
+    public void executeFind(LinkedList<Panthera> catList) {
+
+        System.out.println();
+        System.out.print("Enter a name or part of a name to find: ");
+        String search = input.nextLine().toLowerCase();
+        System.out.println();
+
+        boolean found = false;
+
+        for (Panthera cat : catList) {
+            if (cat.name().toLowerCase().contains(search)) {
+                System.out.println(cat);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No cats found matching that name.");
+        }
 
     }
 
@@ -180,6 +255,5 @@ public class Menu {
     /*
      * TIP: Additional methods and functionality need to be added to this class.
      */
-
 
 }
