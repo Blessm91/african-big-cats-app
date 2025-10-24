@@ -10,6 +10,10 @@ public class Panthera extends PantheraGPS {
      * implementation.
      */
 
+    // attributes
+    private double weight;
+    private double speed;
+
     // constructor
     public Panthera(String name) {
 
@@ -19,11 +23,30 @@ public class Panthera extends PantheraGPS {
         // initialize attributes
         this.setSpecies("panthera");
 
+        /*
+         * TIP: The weight and speed are initialized to random values to simulate different cat
+         * conditions.
+         */
+
+        this.weight = 100 + Math.random() * 500; // random weight between 100–600 lbs
+        this.speed = 5 + Math.random() * 45; // random speed between 5–50 mph
     }
 
     // returns what type of fur this species has (can be overridden)
     public String fur() {
         return "unknown";
+    }
+
+    // returns the random weight of the cat
+    public double weight() {
+        return this.weight;
+    }
+
+    // returns the random speed of the cat
+    public double speed() {
+        // re-randomize speed to simulate changing motion
+        this.speed = 5 + Math.random() * 45;
+        return this.speed;
     }
 
     // serializes attributes into a string
@@ -41,11 +64,14 @@ public class Panthera extends PantheraGPS {
         s += ", ";
         s += "latitude: " + this.latitude();
         s += ", ";
+        s += "weight: " + this.weight();
+        s += ", ";
+        s += "speed: " + String.format("%.2f", this.speed());
+        s += ", ";
         s += "fur: " + this.fur();
         s += " }";
 
         return s;
-
     }
 
 }
