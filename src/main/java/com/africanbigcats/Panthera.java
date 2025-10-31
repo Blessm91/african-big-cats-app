@@ -11,7 +11,7 @@ public class Panthera extends PantheraGPS {
      */
 
     // attributes
-    private double weight;
+    private int weight;
     private double speed;
 
     // constructor
@@ -28,8 +28,8 @@ public class Panthera extends PantheraGPS {
          * conditions.
          */
 
-        this.weight = 100 + Math.random() * 500; // random weight between 100–600 lbs
-        this.speed = 5 + Math.random() * 45; // random speed between 5–50 mph
+        this.weight = 10 + (int) (Math.random() * 591); // random weight between 10–600 lbs
+        this.speed = Math.random() * 50; // random speed between 0–50 mph
     }
 
     // returns what type of fur this species has (can be overridden)
@@ -38,15 +38,20 @@ public class Panthera extends PantheraGPS {
     }
 
     // returns the random weight of the cat
-    public double weight() {
+    public int weight() {
         return this.weight;
     }
 
     // returns the random speed of the cat
     public double speed() {
         // re-randomize speed to simulate changing motion
-        this.speed = 5 + Math.random() * 45;
+        this.speed = Math.random() * 50;
         return this.speed;
+    }
+
+    // prints the Panthera roar sound
+    public void roar() {
+        System.out.println("Rrrrrrrrroooooooaaaaarrrrr!");
     }
 
     // serializes attributes into a string
